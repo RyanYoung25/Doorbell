@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import BaseHTTPServer
-from blinkLights import blink
+from blinkLights import *
 
 
 class DoorBellHandler(BaseHTTPServer.BaseHTTPRequestHandler):
@@ -34,6 +34,7 @@ def startServer():
 
 
 def main():
+    setup()
     startServer()
 
 if __name__ == "__main__":

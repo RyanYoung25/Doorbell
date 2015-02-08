@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import Rpi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 
 def setup():
@@ -9,6 +9,7 @@ def setup():
     GPIO.setup(7, GPIO.OUT)
     GPIO.setup(11, GPIO.OUT)
     GPIO.setup(13, GPIO.OUT)
+    GPIO.output(7, False)
 
 def blink():
     setup()
