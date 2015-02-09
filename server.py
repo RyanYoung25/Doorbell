@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 import BaseHTTPServer, cgi
+import signal 
+import sys
 from time import gmtime, strftime
 from blinkLights import *
 
@@ -63,7 +65,12 @@ def startServer():
     server.serve_forever()
 
 
+def signal_handler(signal, frame):
+    shutDown()
+    sys.exit(0)
+
 def main():
+    signal.signal(signal.SIGINT, signal_handler)
     setup()
     startServer()
 

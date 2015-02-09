@@ -11,6 +11,9 @@ def setup():
     GPIO.setup(13, GPIO.OUT)
     GPIO.output(7, False)
 
+def shutDown():
+    GPIO.cleanup()
+
 def blink():
     setup()
     while True:
