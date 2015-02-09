@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import BaseHTTPServer, cgi
-import signal 
+import signal
 import sys
 from time import gmtime, strftime
 from blinkLights import *
@@ -48,8 +48,6 @@ class DoorBellHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         s.wfile.write(html)
 
     def do_POST(s):
-        blink()
-
         # Retrieve the POST parameters
         ctype, pdict = cgi.parse_header(s.headers.getheader('content-type'))
         length = int(s.headers.getheader('content-length'))
@@ -57,6 +55,8 @@ class DoorBellHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
         message = postVars["message"][0]
         print "[" + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + "] " + message
+
+        blink()
 
 
 def startServer():
