@@ -3,6 +3,10 @@
 import RPi.GPIO as GPIO
 import time
 
+#Global Boolean :(
+blinkingFlag = True
+
+
 def setup():
     GPIO.setmode(GPIO.BOARD)
     #Default 7, 11, 13
@@ -11,12 +15,17 @@ def setup():
     GPIO.setup(13, GPIO.OUT)
     GPIO.output(7, False)
 
+
 def shutDown():
+    global blinkingFlag
+    blinkingFlag = False
     GPIO.cleanup()
 
+
 def blink():
+    global blinkingFlag
     setup()
-    while True:
+    while blinkingFlag:
         GPIO.output(7, True)
         time.sleep(.5)
         GPIO.output(7, False)
